@@ -20,4 +20,6 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
+          pwd
+          ls
           az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
