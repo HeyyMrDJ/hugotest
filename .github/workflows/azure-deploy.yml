@@ -20,7 +20,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          sudo apt install hugo -y
+          apt install hugo -y
           hugo
           pwd
           ls
