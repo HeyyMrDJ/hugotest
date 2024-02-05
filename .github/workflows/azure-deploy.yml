@@ -17,6 +17,5 @@ jobs:
     - name: Deploy to Azure Blob Storage
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Deploy site
-      run: |
-        az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        inlineScript: |
+          az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
