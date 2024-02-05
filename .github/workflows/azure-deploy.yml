@@ -13,13 +13,17 @@ jobs:
     - name: Install Azure CLI
       run: |
         curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-    - name: Install Hugo
-      run: |
-        sudo apt install hugo -y
-    - name: Run Hugo
-      run: |
-        pwd && ls
-        hugo
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+        extended: true # Set to true if you use the extended version of Hugo
+
+    - name: Build Site
+      run: hugo --minify
+
+    - name: List output
+      run: ls -l public
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
