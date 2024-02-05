@@ -13,6 +13,8 @@ jobs:
     - name: Install Azure CLI
       run: |
         curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        sudo apt install hugo -y
+        hugo
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -20,8 +22,6 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          apt install hugo -y
-          hugo
           pwd
           ls
           az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
