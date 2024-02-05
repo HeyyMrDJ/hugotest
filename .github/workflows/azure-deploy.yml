@@ -17,5 +17,6 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Deploy site
       run: |
         az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
