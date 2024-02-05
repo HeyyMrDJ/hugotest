@@ -1,0 +1,21 @@
+name: Deploy to Azure Blob Storage
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to match your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Azure CLI
+      run: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    - name: Deploy to Azure Blob Storage
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      run: |
+        az storage blob upload-batch -s public -d \$web --account-name hugo69 --connection-string ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
