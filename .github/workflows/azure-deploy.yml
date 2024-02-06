@@ -36,4 +36,4 @@ jobs:
         inlineScript: |
           pwd
           ls
-          az storage blob upload-batch --account-name hugo69  --auth-mode key -d '$web' -s . --overwrite
+          az storage blob upload-batch --account-name hugo69  --auth-mode key -d '$web' -s public --overwrite
