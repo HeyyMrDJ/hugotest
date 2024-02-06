@@ -20,7 +20,7 @@ jobs:
         extended: true # Set to true if you use the extended version of Hugo
 
     - name: Build Site
-      run: hugo --minify
+      run: hugo
 
     - name: List output
       run: ls -l public
