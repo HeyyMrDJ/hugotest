@@ -34,4 +34,4 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch --account-name hugo69  --auth-mode key -d '$web' -s public --overwrite
+          az storage blob upload-batch --account-name hugo69 -d '$web' -s public --overwrite --auth-mode login
